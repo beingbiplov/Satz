@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { supabaseBrowser } from "@/lib/supabase/browser";
 
 import { Button } from "@/components/common/button";
@@ -15,11 +16,13 @@ export default function AppShell({ email }: { email: string }) {
     <main className='min-h-screen bg-satz-bg text-satz-text'>
       <header className='border-b border-satz-border/50'>
         <div className='mx-auto flex h-16 max-w-6xl items-center justify-between px-6'>
-          <div className='text-lg font-semibold tracking-tight'>Satz</div>
+          <Link href='/' className='text-lg font-semibold tracking-tight hover:text-primary transition-colors'>
+            Satz
+          </Link>
 
           <div className='flex items-center gap-3'>
             <div className='hidden text-sm text-satz-muted sm:block'>{email}</div>
-            <Button variant='ghost' onClick={signOut}>
+            <Button variant='ghost' onClick={signOut} className='px-2 py-2'>
               Sign out
             </Button>
           </div>
