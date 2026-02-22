@@ -1,7 +1,6 @@
 "use client";
 
 import { supabaseBrowser } from "@/lib/supabase/browser";
-
 import { Button } from "@/components/common/button";
 
 function GoogleIcon() {
@@ -46,23 +45,42 @@ export default function LoginPage() {
   }
 
   return (
-    <main className='flex min-h-screen items-center justify-center bg-background px-6'>
-      <div className='mx-auto w-full max-w-[360px]'>
+    <main className='relative flex min-h-screen items-center justify-center bg-background px-6'>
+      {/* subtle brand glow */}
+      <div
+        aria-hidden
+        className='pointer-events-none absolute top-0 left-1/2 h-[300px] w-[600px] -translate-x-1/2 blur-3xl'
+        style={{
+          backgroundColor: "rgb(var(--primary))",
+          opacity: 0.08,
+        }}
+      />
+
+      <div className='relative mx-auto w-full max-w-[380px]'>
         {/* Logo */}
         <div className='mb-10 text-center'>
-          <h1 className='text-3xl font-semibold tracking-tight text-foreground'>Satz</h1>
-          <p className='mt-2 text-sm text-muted-foreground'>Write German. Get better.</p>
+          <h1 className='text-3xl font-semibold tracking-tight text-foreground'>
+            Sat
+            <span style={{ color: "rgb(var(--primary))" }}>z</span>
+          </h1>
+
+          <p className='mt-2 text-sm text-muted-foreground'>Write German. Get Better.</p>
         </div>
 
         {/* Card */}
-        <div className='rounded-xl border border-border/60 bg-card shadow-sm p-[16px]'>
+        <div
+          className='rounded-xl bg-card p-6 shadow-sm'
+          style={{
+            border: "1px solid rgb(var(--primary) / 0.28)",
+          }}
+        >
           <div className='mb-6'>
             <h2 className='text-lg font-medium text-foreground'>Sign in</h2>
             <p className='mt-1 text-sm text-muted-foreground'>Save progress and review your mistakes.</p>
           </div>
 
           <div className='flex justify-center'>
-            <Button variant='outline' onClick={signInWithGoogle} className='px-4 py-2.5'>
+            <Button variant='outline' onClick={signInWithGoogle} className='gap-3'>
               <GoogleIcon />
               Continue with Google
             </Button>
@@ -71,7 +89,9 @@ export default function LoginPage() {
           <p className='mt-4 text-center text-xs text-muted-foreground'>No spam. Just learning.</p>
         </div>
 
-        <p className='mt-8 text-center text-xs text-muted-foreground'>Minimal. Output-first. Built for A1 learners.</p>
+        <p className='mt-8 text-center text-xs text-muted-foreground' style={{ color: "rgb(var(--primary))" }}>
+          Minimal. Output-first. Built for A1 learners.
+        </p>
       </div>
     </main>
   );

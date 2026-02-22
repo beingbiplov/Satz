@@ -1,46 +1,88 @@
 @import "tailwindcss";
 
-/* your theme variables below */
 @layer base {
   :root {
-    --background: 249 250 251;
-    --foreground: 17 24 39;
-    --card: 249 250 251;
-    --card-foreground: 17 24 39;
-    --primary: 37 99 235;
-    --primary-foreground: 255 255 255;
-    --muted-foreground: 107 114 128;
-    --border: 226 232 240;
+    --background: 255 255 255;
+    --foreground: 15 23 42; /* slate-900 */
+
+    --card: 255 255 255;
+    --card-foreground: 15 23 42;
+
+    --popover: 255 255 255;
+    --popover-foreground: 15 23 42;
+
+    /* Brand Green */
+    --primary: 153 229 10; /* #99E50A */
+    --primary-foreground: 15 23 42;
+
+    /* Softer green accent surface */
+    --accent: 153 229 10;
+    --accent-foreground: 15 23 42;
+
+    /* Muted stays neutral */
+    --muted: 241 245 249;
+    --muted-foreground: 100 116 139;
+
+    /* Border slightly tinted toward green */
+    --border: 220 230 200;
+
+    --input: 220 230 200;
+
+    /* Focus rings green */
+    --ring: 153 229 10;
+
+    --destructive: 239 68 68;
+    --destructive-foreground: 255 255 255;
+
     --radius: 12px;
-  }
-
-  .dark {
-    /* Background: slightly deeper */
-    --background: 17 24 39; /* #111827 */
-
-    /* Foreground stays */
-    --foreground: 249 250 251; /* #F9FAFB */
-
-    /* Card: slightly lighter than background */
-    --card: 24 34 54; /* ~#182236 */
-    --card-foreground: 249 250 251;
-
-    /* Muted: use a warm-ish tint to avoid cold monotone */
-    --muted: 255 255 255;
-    --muted-foreground: 166 173 187; /* slightly warmer than 9CA3AF */
-
-    /* Border: softer (less contrast) */
-    --border: 55 65 81; /* #374151 */
-
-    /* Primary unchanged */
-    --primary: 37 99 235;
-    --primary-foreground: 255 255 255;
-
-    --ring: 37 99 235;
   }
 
   body {
     background: rgb(var(--background));
     color: rgb(var(--foreground));
+  }
+
+  ::selection {
+    background: rgb(var(--primary) / 0.3);
+  }
+}
+
+@layer utilities {
+  /* Brand color helpers (Tailwind v4-safe) */
+  .bg-brand {
+    background-color: rgb(var(--primary));
+  }
+  .text-brand-ink {
+    color: rgb(var(--primary-foreground));
+  }
+
+  .bg-brand-05 {
+    background-color: rgb(var(--primary) / 0.05);
+  }
+  .bg-brand-10 {
+    background-color: rgb(var(--primary) / 0.1);
+  }
+  .bg-brand-12 {
+    background-color: rgb(var(--primary) / 0.12);
+  }
+  .bg-brand-15 {
+    background-color: rgb(var(--primary) / 0.15);
+  }
+
+  .border-brand-30 {
+    border-color: rgb(var(--primary) / 0.3);
+  }
+  .border-brand-40 {
+    border-color: rgb(var(--primary) / 0.4);
+  }
+  .border-brand-55 {
+    border-color: rgb(var(--primary) / 0.55);
+  }
+
+  .ring-brand-35 {
+    --tw-ring-color: rgb(var(--primary) / 0.35);
+  }
+  .ring-brand-45 {
+    --tw-ring-color: rgb(var(--primary) / 0.45);
   }
 }

@@ -26,7 +26,9 @@ export function Button(props: ButtonAsButton | ButtonAsLink) {
   const { variant = "primary", size = "md", className, children, ...rest } = props as any;
 
   const base =
-    "inline-flex items-center justify-center gap-2 rounded-xl font-medium transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-primary/40 disabled:opacity-50 disabled:pointer-events-none cursor-pointer";
+    "inline-flex items-center justify-center gap-2 rounded-xl font-medium transition-all duration-150 " +
+    "focus:outline-none focus:ring-2 focus:ring-[rgb(var(--primary)/0.35)] " +
+    "disabled:opacity-50 disabled:pointer-events-none cursor-pointer active:translate-y-[0.5px]";
 
   const sizes: Record<ButtonSize, string> = {
     sm: "h-9 px-3 text-sm",
@@ -35,18 +37,21 @@ export function Button(props: ButtonAsButton | ButtonAsLink) {
   };
 
   const variants: Record<ButtonVariant, string> = {
-    primary: "bg-primary text-primary-foreground hover:opacity-90 active:scale-[0.98]",
+    primary:
+      "bg-[rgb(var(--primary))] text-[rgb(var(--primary-foreground))] " +
+      "hover:bg-[rgb(var(--primary)/0.9)] shadow-sm",
 
-    outline: "border border-border bg-card text-foreground hover:bg-muted/40",
+    outline:
+      "border border-[rgb(var(--primary)/0.4)] bg-background text-foreground " +
+      "hover:bg-[rgb(var(--primary)/0.08)] hover:border-[rgb(var(--primary)/0.6)]",
 
-    ghost: "bg-transparent text-foreground hover:bg-muted/40",
+    ghost: "bg-transparent text-foreground hover:bg-[rgb(var(--primary)/0.08)]",
 
-    danger: "bg-destructive text-destructive-foreground hover:opacity-90 active:scale-[0.98]",
+    danger: "bg-destructive text-destructive-foreground hover:opacity-90 shadow-sm",
   };
 
   const classes = cn(base, sizes[size], variants[variant], className);
 
-  // If href exists → render Link
   if ("href" in props && props.href) {
     return (
       <Link href={props.href} className={classes}>
