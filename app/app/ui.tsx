@@ -2,6 +2,8 @@
 
 import { supabaseBrowser } from "@/lib/supabase/browser";
 
+import { Button } from "@/components/common/button";
+
 export default function AppShell({ email }: { email: string }) {
   async function signOut() {
     const supabase = supabaseBrowser();
@@ -17,12 +19,9 @@ export default function AppShell({ email }: { email: string }) {
 
           <div className='flex items-center gap-3'>
             <div className='hidden text-sm text-satz-muted sm:block'>{email}</div>
-            <button
-              onClick={signOut}
-              className='rounded-lg border border-satz-border/70 bg-white/5 px-4 py-2 text-sm hover:bg-white/10'
-            >
+            <Button variant='ghost' onClick={signOut}>
               Sign out
-            </button>
+            </Button>
           </div>
         </div>
       </header>
