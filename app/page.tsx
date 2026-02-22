@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Button } from "@/components/common/button";
 
 function Container({ children }: { children: React.ReactNode }) {
   return <div className='mx-auto w-full max-w-5xl px-6'>{children}</div>;
@@ -6,43 +7,21 @@ function Container({ children }: { children: React.ReactNode }) {
 
 function Divider() {
   return (
-    <div className='mx-auto h-px w-full max-w-5xl bg-gradient-to-r from-transparent via-white/10 to-transparent' />
+    <div className='mx-auto h-px w-full max-w-5xl bg-gradient-to-r from-transparent via-border/70 to-transparent' />
   );
 }
 
 function Pill({ children }: { children: React.ReactNode }) {
   return (
-    <span className='inline-flex items-center rounded-full border border-satz-border/60 bg-white/5 px-3 py-1 text-xs text-satz-muted'>
+    <span className='inline-flex items-center rounded-full border border-border/60 bg-muted/10 px-3 py-1 text-xs text-muted-foreground'>
       {children}
     </span>
   );
 }
 
-function Button({
-  children,
-  href,
-  variant = "primary",
-}: {
-  children: React.ReactNode;
-  href: string;
-  variant?: "primary" | "secondary";
-}) {
-  const base =
-    "inline-flex items-center justify-center rounded-lg px-5 py-2.5 text-sm font-medium transition focus:outline-none focus:ring-2 focus:ring-satz-blue/60 focus:ring-offset-0 active:translate-y-[1px]";
-  const styles =
-    variant === "primary"
-      ? "bg-satz-blue text-white hover:bg-satz-blue/90 shadow-[0_10px_30px_rgba(37,99,235,0.18)]"
-      : "border border-satz-border/70 bg-white/5 text-satz-text hover:bg-white/10";
-  return (
-    <Link className={`${base} ${styles}`} href={href}>
-      {children}
-    </Link>
-  );
-}
-
 function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
-    <Link href={href} className='text-sm text-satz-muted transition hover:text-satz-text'>
+    <Link href={href} className='text-sm text-muted-foreground transition-colors hover:text-foreground'>
       {children}
     </Link>
   );
@@ -55,8 +34,9 @@ function Icon({ path }: { path: string }) {
       height='22'
       viewBox='0 0 24 24'
       fill='none'
-      className='text-satz-muted'
+      className='text-muted-foreground'
       xmlns='http://www.w3.org/2000/svg'
+      aria-hidden='true'
     >
       <path d={path} stroke='currentColor' strokeWidth='1.8' strokeLinecap='round' strokeLinejoin='round' />
     </svg>
@@ -66,49 +46,50 @@ function Icon({ path }: { path: string }) {
 function Step({ title, desc, icon }: { title: string; desc: string; icon: React.ReactNode }) {
   return (
     <div className='group flex flex-col items-center text-center'>
-      <div className='mb-4 flex h-12 w-12 items-center justify-center rounded-xl border border-satz-border/60 bg-white/5 transition group-hover:bg-white/7'>
+      <div className='mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-card/70 ring-1 ring-border/40 transition-colors group-hover:bg-card/90'>
         {icon}
       </div>
-      <div className='text-base font-semibold text-satz-text'>{title}</div>
-      <p className='mt-2 max-w-xs text-sm leading-6 text-satz-muted'>{desc}</p>
+      <div className='text-base font-semibold text-foreground'>{title}</div>
+      <p className='mt-2 max-w-xs text-sm leading-6 text-muted-foreground'>{desc}</p>
     </div>
   );
 }
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <div className='rounded-xl border border-satz-border/60 bg-white/5 px-4 py-3'>
-      <div className='text-xs font-medium text-satz-muted'>{label}</div>
-      <div className='mt-1 text-sm font-semibold text-satz-text'>{value}</div>
+    <div className='rounded-xl bg-card/70 px-4 py-3 ring-1 ring-border/40'>
+      <div className='text-xs font-medium text-muted-foreground'>{label}</div>
+      <div className='mt-1 text-sm font-semibold text-foreground'>{value}</div>
     </div>
   );
 }
 
 function MockCard() {
   return (
-    <div className='rounded-2xl border border-satz-border/60 bg-white/5 p-6 shadow-[0_0_0_1px_rgba(255,255,255,0.02)] sm:p-8'>
-      <div className='text-xs font-semibold tracking-widest text-satz-muted'>TRANSLATE THIS SENTENCE</div>
+    <div className='rounded-2xl bg-card/70 p-6 shadow-sm ring-1 ring-border/40 sm:p-8'>
+      <div className='text-xs font-semibold tracking-widest text-muted-foreground'>TRANSLATE THIS SENTENCE</div>
 
-      <div className='mt-2 text-2xl font-semibold text-satz-text sm:text-3xl'>I would like two coffees.</div>
+      <div className='mt-2 text-2xl font-semibold text-foreground sm:text-3xl'>I would like two coffees.</div>
 
       <div className='mt-6 grid gap-3'>
-        <div className='rounded-xl border border-satz-border/60 bg-white/5 px-4 py-3 text-satz-muted'>
+        <div className='rounded-xl bg-muted/10 px-4 py-3 text-muted-foreground ring-1 ring-border/40'>
           Ich möchte zwei Kaffee<span className='animate-pulse'>|</span>
         </div>
 
         <div className='flex items-center gap-3'>
-          <div className='h-px flex-1 bg-white/10' />
-          <div className='text-xs text-satz-muted'>feedback</div>
-          <div className='h-px flex-1 bg-white/10' />
+          <div className='h-px flex-1 bg-border/60' />
+          <div className='text-xs text-muted-foreground'>feedback</div>
+          <div className='h-px flex-1 bg-border/60' />
         </div>
 
-        <div className='rounded-xl border border-satz-green/30 bg-satz-green/10 px-4 py-3'>
-          <div className='text-sm font-semibold text-satz-green'>Ich hätte gern zwei Kaffees.</div>
+        {/* subtle “correct” accent to break monotony */}
+        <div className='rounded-xl bg-muted/10 px-4 py-3 ring-1 ring-emerald-500/25'>
+          <div className='text-sm font-semibold text-foreground'>Ich hätte gern zwei Kaffees.</div>
         </div>
 
-        <p className='text-sm leading-6 text-satz-muted'>
-          Use <span className='text-satz-text'>“Ich hätte gern”</span> for a more natural, polite request than{" "}
-          <span className='text-satz-text'>“Ich möchte”</span>.
+        <p className='text-sm leading-6 text-muted-foreground'>
+          Use <span className='text-foreground'>“Ich hätte gern”</span> for a more natural, polite request than{" "}
+          <span className='text-foreground'>“Ich möchte”</span>.
         </p>
 
         <div className='flex flex-wrap gap-2'>
@@ -117,9 +98,11 @@ function MockCard() {
           <Pill>idiom</Pill>
         </div>
 
-        <div className='mt-1 flex gap-3'>
-          <Button href='/app'>Try one</Button>
-          <Button href='#how' variant='secondary'>
+        <div className='mt-1 flex flex-wrap gap-3'>
+          <Button href='/app' size='sm'>
+            Try one
+          </Button>
+          <Button href='#how' variant='outline' size='sm'>
             Learn more
           </Button>
         </div>
@@ -130,30 +113,35 @@ function MockCard() {
 
 export default function HomePage() {
   return (
-    <main className='min-h-screen overflow-hidden'>
-      {/* Subtle hero glow */}
-      <div aria-hidden className='pointer-events-none absolute inset-0'>
-        <div className='absolute left-1/2 top-[-180px] h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-satz-blue/10 blur-3xl' />
-        <div className='absolute left-[20%] top-[120px] h-[260px] w-[260px] rounded-full bg-satz-green/7 blur-3xl' />
+    <main className='min-h-screen bg-background text-foreground'>
+      {/* Subtle hero glow (less intense, slightly off-center) */}
+      <div aria-hidden className='pointer-events-none absolute inset-0 overflow-hidden'>
+        <div className='absolute left-[55%] top-[-260px] h-[620px] w-[620px] -translate-x-1/2 rounded-full bg-primary/10 blur-3xl' />
       </div>
 
       {/* Header */}
-      <header className='relative border-b border-satz-border/50'>
+      <header className='relative border-b border-border/50'>
         <Container>
           <div className='flex h-16 items-center justify-between'>
             <div className='flex items-center gap-8'>
-              <div className='text-lg font-semibold tracking-tight'>Satz</div>
+              <Link href='/' className='text-lg font-semibold tracking-tight transition-opacity hover:opacity-80'>
+                Satz
+              </Link>
+
               <nav className='hidden items-center gap-6 md:flex'>
                 <NavLink href='#how'>How it works</NavLink>
                 <NavLink href='#demo'>Demo</NavLink>
                 <NavLink href='#why'>Why Satz</NavLink>
               </nav>
             </div>
+
             <div className='flex items-center gap-2'>
-              <Button href='/app' variant='secondary'>
+              <Button href='/login' variant='ghost' size='sm'>
                 Sign in
               </Button>
-              <Button href='/app'>Start writing</Button>
+              <Button href='/app' size='sm'>
+                Start writing
+              </Button>
             </div>
           </div>
         </Container>
@@ -167,19 +155,20 @@ export default function HomePage() {
 
             <h1 className='mt-6 text-4xl font-semibold tracking-tight sm:text-5xl'>Write German. Get Better.</h1>
 
-            <p className='mt-5 max-w-2xl text-base leading-7 text-satz-muted sm:text-lg'>
+            <p className='mt-5 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg'>
               Daily sentence practice with instant correction. No streak-chasing, no gimmicks - just output, feedback,
               and review.
             </p>
 
             <div className='mt-8 flex flex-wrap items-center justify-center gap-3'>
-              <Button href='/app'>Start your first sentence</Button>
-              <Button href='#demo' variant='secondary'>
+              <Button href='/app' size='lg'>
+                Start your first sentence
+              </Button>
+              <Button href='#demo' variant='outline' size='lg'>
                 See it in action
               </Button>
             </div>
 
-            {/* Trust cues */}
             <div className='mt-10 grid w-full max-w-3xl grid-cols-1 gap-3 sm:grid-cols-3'>
               <Stat label='Daily practice' value='5 minutes, focused' />
               <Stat label='Feedback' value='Instant + specific' />
@@ -222,7 +211,7 @@ export default function HomePage() {
       <section id='demo' className='py-16 sm:py-20'>
         <Container>
           <h2 className='text-center text-3xl font-semibold tracking-tight'>See it in action</h2>
-          <p className='mx-auto mt-4 max-w-2xl text-center text-base leading-7 text-satz-muted'>
+          <p className='mx-auto mt-4 max-w-2xl text-center text-base leading-7 text-muted-foreground'>
             One prompt. One answer. Clear correction. Then you review only what you miss.
           </p>
 
@@ -241,14 +230,16 @@ export default function HomePage() {
         <Container>
           <div className='mx-auto max-w-3xl text-center'>
             <h2 className='text-3xl font-semibold tracking-tight'>Practice output, not guessing.</h2>
-            <p className='mt-4 text-base leading-7 text-satz-muted'>
+            <p className='mt-4 text-base leading-7 text-muted-foreground'>
               Most language apps test recognition. Satz makes you produce language from scratch, write sentences, get
               corrected, and review your real mistakes over time. That’s how fluency works.
             </p>
 
-            <div className='mt-8 flex items-center justify-center gap-3'>
-              <Button href='/app'>Start your first sentence</Button>
-              <Button href='#how' variant='secondary'>
+            <div className='mt-8 flex flex-wrap items-center justify-center gap-3'>
+              <Button href='/app' size='lg'>
+                Start your first sentence
+              </Button>
+              <Button href='#how' variant='outline' size='lg'>
                 How it works
               </Button>
             </div>
@@ -257,19 +248,19 @@ export default function HomePage() {
       </section>
 
       {/* Footer */}
-      <footer className='border-t border-satz-border/50 py-10'>
+      <footer className='border-t border-border/50 py-10'>
         <Container>
           <div className='flex flex-col items-center justify-between gap-6 sm:flex-row'>
-            <div className='text-sm text-satz-muted'>© {new Date().getFullYear()} Satz</div>
+            <div className='text-sm text-muted-foreground'>© {new Date().getFullYear()} Satz</div>
 
-            <div className='flex items-center gap-6 text-sm text-satz-muted'>
-              <Link className='hover:text-satz-text' href='/privacy'>
+            <div className='flex items-center gap-6 text-sm text-muted-foreground'>
+              <Link className='transition-colors hover:text-foreground' href='/privacy'>
                 Privacy
               </Link>
-              <Link className='hover:text-satz-text' href='/terms'>
+              <Link className='transition-colors hover:text-foreground' href='/terms'>
                 Terms
               </Link>
-              <Link className='hover:text-satz-text' href='/contact'>
+              <Link className='transition-colors hover:text-foreground' href='/contact'>
                 Contact
               </Link>
             </div>
