@@ -15,14 +15,28 @@
   }
 
   .dark {
-    --background: 31 41 55;
-    --foreground: 249 250 251;
-    --card: 17 24 39;
+    /* Background: slightly deeper */
+    --background: 17 24 39; /* #111827 */
+
+    /* Foreground stays */
+    --foreground: 249 250 251; /* #F9FAFB */
+
+    /* Card: slightly lighter than background */
+    --card: 24 34 54; /* ~#182236 */
     --card-foreground: 249 250 251;
+
+    /* Muted: use a warm-ish tint to avoid cold monotone */
+    --muted: 255 255 255;
+    --muted-foreground: 166 173 187; /* slightly warmer than 9CA3AF */
+
+    /* Border: softer (less contrast) */
+    --border: 55 65 81; /* #374151 */
+
+    /* Primary unchanged */
     --primary: 37 99 235;
     --primary-foreground: 255 255 255;
-    --muted-foreground: 156 163 175;
-    --border: 51 65 85;
+
+    --ring: 37 99 235;
   }
 
   body {
