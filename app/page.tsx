@@ -1,3 +1,4 @@
+import { PageShell } from "@/components/layout/pageShell";
 import Link from "next/link";
 import { Button } from "@/components/common/button";
 
@@ -110,7 +111,6 @@ function MockCard() {
       <div className='mt-2 text-2xl font-semibold text-foreground sm:text-3xl'>I would like two coffees.</div>
 
       <div className='mt-6 grid gap-3'>
-        {/* User input */}
         <div
           className='rounded-xl px-4 py-3 text-muted-foreground'
           style={{
@@ -122,14 +122,12 @@ function MockCard() {
           <span className='animate-pulse'>|</span>
         </div>
 
-        {/* Feedback separator */}
         <div className='flex items-center gap-3'>
           <div className='h-px flex-1' style={{ backgroundColor: "rgb(var(--primary) / 0.25)" }} />
           <div className='text-xs text-muted-foreground'>feedback</div>
           <div className='h-px flex-1' style={{ backgroundColor: "rgb(var(--primary) / 0.25)" }} />
         </div>
 
-        {/* Correct answer */}
         <div
           className='rounded-xl px-4 py-3'
           style={{
@@ -166,53 +164,23 @@ function MockCard() {
 
 export default function HomePage() {
   return (
-    <main className='relative min-h-screen bg-background text-foreground'>
-      {/* Header */}
-      <header
-        className='relative border-b bg-background/80 backdrop-blur'
-        style={{ borderColor: "rgb(var(--primary) / 0.28)" }}
-      >
-        <Container>
-          <div className='flex h-16 items-center justify-between'>
-            <div className='flex items-center gap-8'>
-              <Link href='/' className='text-lg font-semibold tracking-tight'>
-                Sat<span style={{ color: "rgb(var(--primary))" }}>z</span>
-              </Link>
+    <PageShell>
+      {/* We keep the exact same content design — only header/footer moved to shared layout */}
 
-              <nav className='hidden items-center gap-6 md:flex'>
-                <NavLink href='#how'>How it works</NavLink>
-                <NavLink href='#demo'>Demo</NavLink>
-                <NavLink href='#why'>Why Satz</NavLink>
-              </nav>
-            </div>
-
-            <div className='flex items-center gap-2'>
-              <Button href='/login' variant='ghost' size='sm'>
-                Sign in
-              </Button>
-              <Button href='/app' size='sm'>
-                Start writing
-              </Button>
-            </div>
-          </div>
-        </Container>
-      </header>
-
-      {/*    */}
+      {/* HERO */}
       <section className='relative py-20 sm:py-24 overflow-hidden'>
-        {/* Soft brand gradient background */}
         <div
           aria-hidden
           className='absolute inset-0'
           style={{
             background: `
-        linear-gradient(
-          to bottom,
-          rgb(var(--primary) / 0.10),
-          rgb(var(--primary) / 0.05) 30%,
-          transparent 70%
-        )
-      `,
+              linear-gradient(
+                to bottom,
+                rgb(var(--primary) / 0.10),
+                rgb(var(--primary) / 0.05) 30%,
+                transparent 70%
+              )
+            `,
           }}
         />
 
@@ -247,7 +215,7 @@ export default function HomePage() {
 
       <Divider />
 
-      {/* How it works */}
+      {/* HOW */}
       <section id='how' className='py-16 sm:py-20'>
         <Container>
           <h2 className='text-center text-3xl font-semibold tracking-tight'>How it works</h2>
@@ -274,7 +242,7 @@ export default function HomePage() {
 
       <Divider />
 
-      {/* Demo */}
+      {/* DEMO */}
       <section id='demo' className='py-16 sm:py-20'>
         <Container>
           <h2 className='text-center text-3xl font-semibold tracking-tight'>See it in action</h2>
@@ -292,7 +260,7 @@ export default function HomePage() {
 
       <Divider />
 
-      {/* Why */}
+      {/* WHY */}
       <section id='why' className='py-16 sm:py-20'>
         <Container>
           <div className='mx-auto max-w-3xl text-center'>
@@ -313,27 +281,6 @@ export default function HomePage() {
           </div>
         </Container>
       </section>
-
-      {/* Footer */}
-      <footer className='border-t py-10' style={{ borderColor: "rgb(var(--primary) / 0.18)" }}>
-        <Container>
-          <div className='flex flex-col items-center justify-between gap-6 sm:flex-row'>
-            <div className='text-sm text-muted-foreground'>© {new Date().getFullYear()} Satz</div>
-
-            <div className='flex items-center gap-6 text-sm text-muted-foreground'>
-              <Link className='transition-colors hover:text-foreground' href='/privacy'>
-                Privacy
-              </Link>
-              <Link className='transition-colors hover:text-foreground' href='/terms'>
-                Terms
-              </Link>
-              <Link className='transition-colors hover:text-foreground' href='/contact'>
-                Contact
-              </Link>
-            </div>
-          </div>
-        </Container>
-      </footer>
-    </main>
+    </PageShell>
   );
 }
