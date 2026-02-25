@@ -236,6 +236,7 @@ export default function PracticePage() {
                 <div
                   className={[
                     "relative flex rounded-xl border overflow-hidden transition-all duration-300 animate-in fade-in",
+                    evaluation.grade === "incorrect" && "animate-shake",
                     evaluation.grade === "perfect" &&
                       "bg-[var(--success-bg)] border-[var(--success-border)] shadow-[0_0_20px_rgba(34,197,94,0.15)]",
                     evaluation.grade === "minor" && "bg-[var(--warning-bg)] border-[var(--warning-border)]",
