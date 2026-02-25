@@ -33,14 +33,6 @@ function Pill({ children }: { children: React.ReactNode }) {
   );
 }
 
-function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
-  return (
-    <Link href={href} className='text-sm text-muted-foreground transition-colors hover:text-foreground'>
-      {children}
-    </Link>
-  );
-}
-
 function Icon({ path }: { path: string }) {
   return (
     <svg
@@ -164,9 +156,7 @@ function MockCard() {
 
 export default function HomePage() {
   return (
-    <PageShell>
-      {/* We keep the exact same content design — only header/footer moved to shared layout */}
-
+    <PageShell fullWidth>
       {/* HERO */}
       <section className='relative py-20 sm:py-24 overflow-hidden'>
         <div
