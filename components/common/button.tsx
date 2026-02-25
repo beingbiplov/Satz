@@ -23,7 +23,7 @@ type ButtonAsLink = BaseProps &
   };
 
 export function Button(props: ButtonAsButton | ButtonAsLink) {
-  const { variant = "primary", size = "md", className, children, ...rest } = props as any;
+  const { variant = "primary", size = "md", className, children, ...rest } = props;
 
   const base =
     "inline-flex items-center justify-center gap-2 rounded-xl font-medium transition-all duration-150 " +
